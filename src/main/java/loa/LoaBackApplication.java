@@ -1,4 +1,4 @@
-package me.ssiiin.loa_back;
+package loa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
