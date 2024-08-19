@@ -15,6 +15,8 @@ public class CharacterController {
 
     @GetMapping("/api/characters/profiles")
     public CharacterProfileDto getCharacterProfile(@RequestParam String characterName) {
+        System.out.println("controller Character Name: " + characterName);
+
         return characterService.getCharacterProfile(characterName);
     }
 }
