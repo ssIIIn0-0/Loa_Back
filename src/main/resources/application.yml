@@ -13,7 +13,7 @@ spring:
     name: loa_back
 
   datasource:
-    url: jdbc:mysql://localhost:3306/character_db
+    url: jdbc:mysql://localhost:3306/loa
     username: root
     password: 31215
     driver-class-name: com.mysql.cj.jdbc.Driver

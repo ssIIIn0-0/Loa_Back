@@ -1,4 +1,3 @@
-// src/main/java/loa/entity/Character.java
 package loa.entity;
 
 import jakarta.persistence.*;
@@ -16,7 +15,12 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nickname;
+    private String name;
+    private String characterClass;
+    private int level;
+    private String serverName;
 
-    private String imageUrl;
+    @ManyToOne
+    @JoinColumn(name = "raid_id")
+    private Raid raid;
 }
