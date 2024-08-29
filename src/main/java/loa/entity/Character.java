@@ -1,5 +1,6 @@
 package loa.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "raid_character")
 public class Character {
 
     @Id
@@ -22,5 +24,7 @@ public class Character {
 
     @ManyToOne
     @JoinColumn(name = "raid_id")
+    @JsonBackReference
     private Raid raid;
+
 }

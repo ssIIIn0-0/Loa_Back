@@ -1,5 +1,6 @@
 package loa.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ public class Raid {
 
     private String name;
 
-    @OneToMany(mappedBy = "raid", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "raid", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Character> characters;
 }
