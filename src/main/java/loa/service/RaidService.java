@@ -1,5 +1,6 @@
 package loa.service;
 
+import loa.dto.CharacterDto;
 import loa.entity.Raid;
 import loa.entity.Character;
 import loa.repository.RaidRepository;
@@ -21,17 +22,14 @@ public class RaidService {
         return raidRepository.save(raid);
     }
 
-    public Character addCharacterToRaid(Long raidId, String characterName, String characterClass, int level, String serverName) {
-        Raid raid = raidRepository.findById(raidId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid raid ID"));
-
+    public Character addCharacterToRaid(Long raidId, CharacterDto characterDto) {
+        Raid raid = raidRepository.findById(raidId).orElseThrow(() -> new IllegalArgumentException("Invalid Raid ID"));
         Character character = new Character();
-        character.setName(characterName);
-        character.setCharacterClass(characterClass);
-        character.setLevel(level);
-        character.setServerName(serverName);
+        character.setName(characterDto.getName());
+        character.setCharacterClass(characterDto.getCharacterClass());
+        character.setLevel(characterDto.getLevel());
+        character.setServerName(characterDto.getServerName());
         character.setRaid(raid);
-
         return characterRepository.save(character);
     }
 
