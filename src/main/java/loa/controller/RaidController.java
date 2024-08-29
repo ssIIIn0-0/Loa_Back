@@ -38,4 +38,32 @@ public class RaidController {
     public ResponseEntity<List<Raid>> getAllRaids() {
         return ResponseEntity.ok(raidService.getAllRaids());
     }
+
+    // 공대 상세 정보 조회
+    @GetMapping("/{raidId}")
+    public ResponseEntity<Raid> getRaidById(@PathVariable Long raidId) {
+        return ResponseEntity.ok(raidService.getRaidById(raidId));
+    }
+
+    // 공대 수정
+    @PutMapping("/{raidId}")
+    public ResponseEntity<Raid> updateRaid(@PathVariable Long raidId, @RequestBody Raid updatedRaid) {
+        return ResponseEntity.ok(raidService.updateRaid(raidId, updatedRaid));
+    }
+
+    // 공대 삭제
+    @DeleteMapping("/{raidId}")
+    public ResponseEntity<Void> deleteRaid(@PathVariable Long raidId) {
+        raidService.deleteRaid(raidId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{raidId}/characters/{characterId}")
+    public ResponseEntity<Void> removeCharacterFromRaid(
+            @PathVariable Long raidId,
+            @PathVariable Long characterId
+    ) {
+        raidService.removeCharacterFromRaid(raidId, characterId);
+        return ResponseEntity.noContent().build();
+    }
 }
